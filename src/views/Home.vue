@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <Navbar />
         <SceneItem>
             <!-- <template #img>
@@ -24,6 +24,9 @@ import SceneItem from '../components/SceneItem.vue';
 </script>
 
 <style lang="scss" scoped>
+.container{
+    background-color:rgb(70, 103, 126);
+}
 .bottom {
     margin-top: 13px;
     line-height: 20px;

@@ -1,19 +1,25 @@
 <template>
     <div class="scene" v-for="(sceneData, idx) in sceneDatas">
         <div class="item">
-            <h1>{{ sceneData[0].firstTitle }}</h1>
-            <el-button color=" rgb(78, 87, 123)" size="large" :dark="isDark" plain>See More</el-button>
+            <h1>
+                <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + idx } }">
+                    {{ sceneData[0].firstTitle }}
+                </RouterLink>
+            </h1>
+            <el-button color=" rgb(78, 87, 123)" size="large" :dark="isDark" plain>
+                <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + idx } }">See More</RouterLink>
+            </el-button>
         </div>
 
         <el-row justify="space-evenly">
             <el-col v-for="(scene, index) in sceneData" :key="scene" :span="5" :offset="index > 0 ? 1 : 0">
                 <el-card :body-style="{ padding: '15px' }" shadow="hover">
-                    <img v-bind:src="scene.imgurl"  class="image" />
+                    <img v-bind:src="scene.imgurl" class="image" />
                     <div style="padding: 10px" class="text">
                         <span>{{ scene.secondTitle }}</span>
                         <div class="bottom">
                             <span>{{ scene.detail }}</span>
-                            <el-button text color=" white" size="small" class="botton" :dark="isDark" >operate</el-button>
+                            <el-button text color=" white" size="small" class="botton" :dark="isDark">operate</el-button>
                         </div>
                     </div>
                     <!-- <slot name="img"></slot>
@@ -34,29 +40,29 @@ export default {
             // [{‘一级标题’，‘二级标题’， ‘详情信息’，‘显示图片路径’}, {‘一级标题’，‘二级标题’， ‘详情信息’， ‘显示图片路径’} ......]
             sceneDatas: [
                 [
-                    { firstTitle: "课堂", secondTitle: '视频1', detail: '详情', imgurl: '/src/assets/picture/one.png'},
+                    { firstTitle: "课堂", secondTitle: '视频1', detail: '详情', imgurl: '/src/assets/picture/one.png' },
                     { firstTitle: "课堂", secondTitle: '视频2', detail: '详情', imgurl: '/src/assets/picture/two.png' },
                     { firstTitle: "课堂", secondTitle: '视频3', detail: '详情', imgurl: '/src/assets/picture/three.png' },
                     { firstTitle: "课堂", secondTitle: '视频4', detail: '详情', imgurl: '/src/assets/picture/one.png' }
                 ],
                 // TODO：下同
                 [
-                    { firstTitle: "厨房", secondTitle: '视频1', detail: '详情',imgurl: '' },
-                    { firstTitle: "厨房", secondTitle: '视频2', detail: '详情',imgurl: '' },
-                    { firstTitle: "厨房", secondTitle: '视频3', detail: '详情',imgurl: '' },
-                    { firstTitle: "厨房", secondTitle: '视频4', detail: '详情' ,imgurl: ''}
+                    { firstTitle: "厨房", secondTitle: '视频1', detail: '详情', imgurl: '' },
+                    { firstTitle: "厨房", secondTitle: '视频2', detail: '详情', imgurl: '' },
+                    { firstTitle: "厨房", secondTitle: '视频3', detail: '详情', imgurl: '' },
+                    { firstTitle: "厨房", secondTitle: '视频4', detail: '详情', imgurl: '' }
                 ],
                 [
-                    { firstTitle: "科技馆", secondTitle: '视频1', detail: '详情' ,imgurl: ''},
-                    { firstTitle: "科技馆", secondTitle: '视频2', detail: '详情',imgurl: '' },
-                    { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情',imgurl: '' },
-                    { firstTitle: "科技馆", secondTitle: '视频4', detail: '详情',imgurl: '' }
+                    { firstTitle: "科技馆", secondTitle: '视频1', detail: '详情', imgurl: '' },
+                    { firstTitle: "科技馆", secondTitle: '视频2', detail: '详情', imgurl: '' },
+                    { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情', imgurl: '' },
+                    { firstTitle: "科技馆", secondTitle: '视频4', detail: '详情', imgurl: '' }
                 ],
                 [
-                    { firstTitle: "校园", secondTitle: '视频1', detail: '详情',imgurl: '' },
-                    { firstTitle: "校园", secondTitle: '视频2', detail: '详情' ,imgurl: ''},
-                    { firstTitle: "校园", secondTitle: '视频3', detail: '详情' ,imgurl: ''},
-                    { firstTitle: "校园", secondTitle: '视频4', detail: '详情',imgurl: '' }
+                    { firstTitle: "校园", secondTitle: '视频1', detail: '详情', imgurl: '' },
+                    { firstTitle: "校园", secondTitle: '视频2', detail: '详情', imgurl: '' },
+                    { firstTitle: "校园", secondTitle: '视频3', detail: '详情', imgurl: '' },
+                    { firstTitle: "校园", secondTitle: '视频4', detail: '详情', imgurl: '' }
                 ]
             ]
         }
@@ -88,13 +94,14 @@ export default {
     width: auto;
     height: 150px;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 
 
-.scene { 
+.scene {
     margin: 0 80px 0 130px;
+
     .item {
         color: white;
         padding: 50px 10px;
@@ -105,11 +112,10 @@ export default {
 
     .el-card {
         background-color: rgb(128, 148, 169);
-        border:rgb(123, 129, 136) ;
-        .text{
+        border: rgb(123, 129, 136);
+
+        .text {
             color: white;
         }
     }
-}
-
-</style>
+}</style>

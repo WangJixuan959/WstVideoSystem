@@ -1,21 +1,7 @@
 <template>
     <div class="container">
         <Navbar />
-        <SceneItem>
-            <!-- <template #img>
-                <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                    class="image" />
-            </template>
-            <template #text>
-                <div style="padding: 9px">
-                    <span>二级标题</span>
-                    <div class="bottom">
-                        <span>详情信息1</span>
-                        <el-button text class="button">Operating</el-button>
-                    </div>
-                </div>
-            </template> -->
-        </SceneItem>
+        <SceneItem />
     </div>
 </template>
 
@@ -27,6 +13,7 @@ import SceneItem from '../components/SceneItem.vue';
 .container{
     background-color:rgb(70, 103, 126);
 }
+
 .bottom {
     margin-top: 13px;
     line-height: 20px;
@@ -44,7 +31,6 @@ import SceneItem from '../components/SceneItem.vue';
     width: 100%;
     display: block;
 }
-
 
 h1, p {
   text-align: center;

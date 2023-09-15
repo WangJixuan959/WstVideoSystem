@@ -84,20 +84,12 @@ export default {
     align-items: center;
 }
 
-.button {
-    padding: 0;
-    min-height: auto;
-    color: white;
-}
-
 .image {
     width: auto;
     height: 150px;
     display: flex;
     justify-content: space-between;
 }
-
-
 
 .scene {
     margin: 0 80px 0 130px;
@@ -118,4 +110,5 @@ export default {
             color: white;
         }
     }
-}</style>
+}
+</style>

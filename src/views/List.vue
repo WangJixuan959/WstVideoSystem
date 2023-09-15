@@ -1,23 +1,19 @@
 <template>
     <div>
-        <Navbar>
-            <template #line1>
-                <h1>{{ firstTitle }}</h1>
-            </template>
-            <template #line2>
-                <p>测试文字</p>
-            </template>
-        </Navbar>
+        <Navbar />
+        <div class="firsttitle">
+            <p>{{ firstTitle }}</p>
+        </div>
 
         <el-table :data="tableData" class="tableData" size="large" height="400" :row-class-name="tableRowClassName">
             <el-table-column prop="id" label="id" width="150" />
             <el-table-column prop="time" label="时长" width="150" />
             <el-table-column prop="state" label="状态" width="150" />
             <el-table-column prop="analyzeResult" label="分析结果" />
-            <el-table-column fixed="right" label="Operations" width="150">
+            <el-table-column fixed="right" label="Operations" width="120">
                 <template #default="scope">
                     <el-button link type="primary" size="large" @click="handleClick(scope.row)">Analyze</el-button>
-                    <el-button link type="primary" size="large">Edit</el-button>
+                    <!-- <el-button link type="primary" size="large">Edit</el-button> -->
                 </template>
             </el-table-column>
             <!-- <el-table-column prop="name" label="Name" width="180" />
@@ -142,22 +138,15 @@ const tableData: User[] = [
 </script>
 
 <style lang="scss">
-h1,
-p {
-    text-align: left;
-    padding-left: 30px;
-    font-weight: 1000;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-h1 {
-    font-size: 50px;
-    padding-top: 15px;
-}
-
-p {
-    font-size: 30px;
-    padding-top: 10px;
+.firsttitle {
+    p {
+        text-align: left;
+        padding-left: 30px;
+        font-weight: 1000;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 50px;
+        padding-top: 15px;
+    }
 }
 
 .tableData {

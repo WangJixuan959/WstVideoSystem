@@ -1,13 +1,12 @@
 <template>
     <div>
-        <Navbar>
-            <template #line1>
-                <el-breadcrumb :separator-icon="ArrowRight" class="breadcrumb">
-                    <el-breadcrumb-item>{{ scene }}</el-breadcrumb-item>
-                    <el-breadcrumb-item>{{ videoId }}</el-breadcrumb-item>
-                </el-breadcrumb>
-            </template>
-        </Navbar>
+        <Navbar />
+        <div>
+            <el-breadcrumb :separator-icon="ArrowRight" class="breadcrumb">
+                <el-breadcrumb-item>{{ scene }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ videoId }}</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
 
         <div>
             <el-row>
@@ -29,8 +28,8 @@
                 <el-col :span="24" type="flex" align="middle" style="align-self: center;">
                     <h1>事件发生列表</h1>
                     <el-table :data="tableData" stripe style="width: 800px">
-                        <el-table-column prop="time" label="发生时间" width="400" header-align="center" align="center"/>
-                        <el-table-column prop="type" label="事件类型" width="400" header-align="center" align="center"/>
+                        <el-table-column prop="time" label="发生时间" width="400" header-align="center" align="center" />
+                        <el-table-column prop="type" label="事件类型" width="400" header-align="center" align="center" />
                     </el-table>
                 </el-col>
             </el-row>
@@ -39,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import VideoPlayer from '../components/videoPlayer.vue';
+import VideoPlayer from '../components/VideoPlayer.vue';
 import { ArrowRight } from '@element-plus/icons-vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -83,7 +82,7 @@ const tableData = [
 ]
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .el-row {
     margin: 10px;
 }

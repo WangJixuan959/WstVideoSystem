@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Navbar />
         <div>
             <el-breadcrumb :separator-icon="ArrowRight" class="breadcrumb">
                 <el-breadcrumb-item>{{ scene }}</el-breadcrumb-item>
@@ -9,28 +8,39 @@
         </div>
 
         <div>
-            <el-row>
-                <el-col :span="12" type="flex" align="middle" style="align-self: center;">
-                    <div>
-                        <h1>原始视频</h1>
-                        <VideoPlayer />
-                    </div>
-                </el-col>
-                <el-col :span="12" type="flex" align="middle" style="align-self: center;">
-                    <div>
-                        <h1>事件发生</h1>
-                        <img
-                            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
-                    </div>
+            <el-row :gutter="20">
+                <el-col type="flex" align="middle" style="align-self: center;">
+                    <el-card shadow="hover" class="mgb20" style="height:auto">
+                        <div>
+                            <p>视频信息</p>
+                        </div>
+                    </el-card>
                 </el-col>
             </el-row>
-            <el-row class="eventList">
-                <el-col :span="24" type="flex" align="middle" style="align-self: center;">
-                    <h1>事件发生列表</h1>
-                    <el-table :data="tableData" stripe style="width: 800px">
-                        <el-table-column prop="time" label="发生时间" width="400" header-align="center" align="center" />
-                        <el-table-column prop="type" label="事件类型" width="400" header-align="center" align="center" />
-                    </el-table>
+            <el-row :gutter="20">
+                <el-col :span="14" type="flex" align="middle">
+                    <el-card shadow="hover" style="width: 800px; height: 600px">
+                        <div>
+                            <p>原始视频</p>
+                            <VideoPlayer />
+                        </div>
+                    </el-card>
+                </el-col>
+                <el-col :span="10" type="flex" align="middle" style="align-self: center;">
+                    <el-card shadow="hover" style="width: 500px; height: 300px">
+                        <div>
+                            <p>事件发生截图</p>
+                            <img
+                                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
+                        </div>
+                    </el-card>
+                    <el-card shadow="hover" style="width: 500px; height: 300px">
+                        <p>事件发生列表</p>
+                        <el-table :data="tableData" stripe style="width: 500px">
+                            <el-table-column prop="time" label="发生时间" width="100" header-align="center" align="center" />
+                            <el-table-column prop="type" label="事件类型" width="400" header-align="center" align="center" />
+                        </el-table>
+                    </el-card>
                 </el-col>
             </el-row>
         </div>
@@ -97,9 +107,9 @@ const tableData = [
 }
 
 .breadcrumb {
-    font-size: 40px;
+    font-size: 20px;
     font-family: 'Times New Roman', 'Courier New', Times, serif;
-    padding: 10px 60px;
+    padding: 10px 10px;
 }
 
 h1 {
@@ -108,5 +118,9 @@ h1 {
     font-family: 'Times New Roman', Times, serif;
     font-size: 35px;
     padding-top: 0;
+}
+
+.mgb20 {
+    margin-bottom: 20px;
 }
 </style>

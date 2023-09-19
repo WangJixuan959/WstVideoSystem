@@ -1,6 +1,6 @@
 <template>
     <div class="scene" v-for="(sceneData, idx) in sceneDatas">
-        <div class="item">
+        <!-- <div class="item">
             <h1>
                 <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + idx } }">
                     {{ sceneData[0].firstTitle }}
@@ -9,10 +9,20 @@
             <el-button color=" rgb(78, 87, 123)" size="large" :dark="isDark" plain>
                 <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + idx } }">See More</RouterLink>
             </el-button>
-        </div>
+        </div> -->
 
         <el-row justify="space-evenly">
             <el-col v-for="(scene, index) in sceneData" :key="scene" :span="5" :offset="index > 0 ? 1 : 0">
+                <div class="item">
+                    <h1>
+                        <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + index } }">
+                            {{ sceneData[index].firstTitle }}
+                        </RouterLink>
+                    </h1>
+                    <!-- <el-button color=" rgb(78, 87, 123)" size="large" :dark="isDark" plain>
+                        <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + index } }">See More</RouterLink>
+                    </el-button> -->
+                </div>
                 <el-card :body-style="{ padding: '15px' }" shadow="hover">
                     <img v-bind:src="scene.imgurl" class="image" />
                     <div style="padding: 10px" class="text">
@@ -27,7 +37,6 @@
                 </el-card>
             </el-col>
         </el-row>
-
     </div>
 </template>
 
@@ -41,29 +50,29 @@ export default {
             sceneDatas: [
                 [
                     { firstTitle: "课堂", secondTitle: '视频1', detail: '详情', imgurl: '/src/assets/picture/one.png' },
-                    { firstTitle: "课堂", secondTitle: '视频2', detail: '详情', imgurl: '/src/assets/picture/two.png' },
-                    { firstTitle: "课堂", secondTitle: '视频3', detail: '详情', imgurl: '/src/assets/picture/three.png' },
-                    { firstTitle: "课堂", secondTitle: '视频4', detail: '详情', imgurl: '/src/assets/picture/one.png' }
+                    { firstTitle: "厨房", secondTitle: '视频2', detail: '详情', imgurl: '/src/assets/picture/two.png' },
+                    { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情', imgurl: '/src/assets/picture/three.png' },
+                    { firstTitle: "校园", secondTitle: '视频4', detail: '详情', imgurl: '/src/assets/picture/one.png' }
                 ],
                 // TODO：下同
-                [
-                    { firstTitle: "厨房", secondTitle: '视频1', detail: '详情', imgurl: '' },
-                    { firstTitle: "厨房", secondTitle: '视频2', detail: '详情', imgurl: '' },
-                    { firstTitle: "厨房", secondTitle: '视频3', detail: '详情', imgurl: '' },
-                    { firstTitle: "厨房", secondTitle: '视频4', detail: '详情', imgurl: '' }
-                ],
-                [
-                    { firstTitle: "科技馆", secondTitle: '视频1', detail: '详情', imgurl: '' },
-                    { firstTitle: "科技馆", secondTitle: '视频2', detail: '详情', imgurl: '' },
-                    { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情', imgurl: '' },
-                    { firstTitle: "科技馆", secondTitle: '视频4', detail: '详情', imgurl: '' }
-                ],
-                [
-                    { firstTitle: "校园", secondTitle: '视频1', detail: '详情', imgurl: '' },
-                    { firstTitle: "校园", secondTitle: '视频2', detail: '详情', imgurl: '' },
-                    { firstTitle: "校园", secondTitle: '视频3', detail: '详情', imgurl: '' },
-                    { firstTitle: "校园", secondTitle: '视频4', detail: '详情', imgurl: '' }
-                ]
+                // [
+                //     { firstTitle: "厨房", secondTitle: '视频1', detail: '详情', imgurl: '' },
+                //     { firstTitle: "厨房", secondTitle: '视频2', detail: '详情', imgurl: '' },
+                //     { firstTitle: "厨房", secondTitle: '视频3', detail: '详情', imgurl: '' },
+                //     { firstTitle: "厨房", secondTitle: '视频4', detail: '详情', imgurl: '' }
+                // ],
+                // [
+                //     { firstTitle: "科技馆", secondTitle: '视频1', detail: '详情', imgurl: '' },
+                //     { firstTitle: "科技馆", secondTitle: '视频2', detail: '详情', imgurl: '' },
+                //     { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情', imgurl: '' },
+                //     { firstTitle: "科技馆", secondTitle: '视频4', detail: '详情', imgurl: '' }
+                // ],
+                // [
+                //     { firstTitle: "校园", secondTitle: '视频1', detail: '详情', imgurl: '' },
+                //     { firstTitle: "校园", secondTitle: '视频2', detail: '详情', imgurl: '' },
+                //     { firstTitle: "校园", secondTitle: '视频3', detail: '详情', imgurl: '' },
+                //     { firstTitle: "校园", secondTitle: '视频4', detail: '详情', imgurl: '' }
+                // ]
             ]
         }
     },
@@ -91,15 +100,27 @@ export default {
     justify-content: space-between;
 }
 
+
 .scene {
     margin: 0 80px 0 130px;
+    height: 700px;
 
     .item {
         color: white;
-        padding: 50px 10px;
+        padding: 150px 10px;
         display: flex;
         justify-content: space-between; //水平居中
-        padding-bottom: 20px;
+        padding-bottom: 30px;
+
+        //自定义链接颜色
+        .router-link-active {
+            text-decoration: none;
+            color: yellow;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
     }
 
     .el-card {

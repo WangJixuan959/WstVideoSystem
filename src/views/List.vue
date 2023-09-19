@@ -1,11 +1,11 @@
 <template>
     <div>
-        <Navbar />
+        <!-- <Navbar /> -->
         <div class="firsttitle">
             <p>{{ firstTitle }}</p>
         </div>
 
-        <el-table :data="tableData" class="tableData" size="large" height="400" :row-class-name="tableRowClassName">
+        <el-table :data="tableData" class="tableData" size="large" height="600" :row-class-name="tableRowClassName">
             <el-table-column prop="id" label="id" width="150" />
             <el-table-column prop="time" label="时长" width="150" />
             <el-table-column prop="state" label="状态" width="150" />
@@ -144,15 +144,15 @@ const tableData: User[] = [
         padding-left: 30px;
         font-weight: 1000;
         font-family: 'Times New Roman', Times, serif;
-        font-size: 50px;
-        padding-top: 15px;
+        font-size: 20px;
+        padding-top: 10px;
     }
 }
 
 .tableData {
-    width: 96%;
+    width: auto;
     margin: 20px 33px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 // .el-table .primary-row {

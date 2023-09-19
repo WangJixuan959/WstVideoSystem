@@ -59,7 +59,7 @@ switch (String(route.params.sceneType).split('_')[1]) {
         scene = "课堂"
         break;
     case '1':
-        scene = "厨房"
+        scene = "家庭"
         break;
     case '2':
         scene = "科技馆"
@@ -97,6 +97,9 @@ const tableData = [
     margin: 10px;
 }
 
+.el-card{
+    padding: 10px 10px;
+}
 .grid-content {
     border-radius: 4px;
     min-height: 36px;

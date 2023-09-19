@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- <Navbar /> -->
         <div class="firsttitle">
             <p>{{ firstTitle }}</p>
         </div>
@@ -24,27 +23,33 @@
 
 
 <script lang="ts" setup>
-import Navbar from '../components/Navbar.vue';
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
 
 const route = useRoute();
+
 var firstTitle = ''
-switch (route.params.sceneType) {
-    case 'scene_0':
-        firstTitle = '课堂'
-        break;
-    case 'scene_1':
-        firstTitle = '厨房'
-        break;
-    case 'scene_2':
-        firstTitle = '科技馆'
-        break;
-    case 'scene_3':
-        firstTitle = '校园'
-        break;
-    default:
-        break;
+const getTitle = (route: any) => {
+    switch (route.params.sceneType) {
+        case 'scene_0':
+            firstTitle = '课堂'
+            break;
+        case 'scene_1':
+            firstTitle = '家庭'
+            break;
+        case 'scene_2':
+            firstTitle = '科技馆'
+            break;
+        case 'scene_3':
+            firstTitle = '校园'
+            break;
+        default:
+            break;
+    }
 }
+getTitle(route);
+onBeforeRouteUpdate(to => {
+    getTitle(to);
+});
 
 const router = useRouter()
 const handleClick = (row) => {
@@ -152,7 +157,7 @@ const tableData: User[] = [
 .tableData {
     width: auto;
     margin: 20px 33px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 // .el-table .primary-row {

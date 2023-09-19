@@ -21,7 +21,7 @@ const router = createRouter({
           path: '/:sceneType/list',
           name: 'list',
           meta: {
-            title: '列表',
+            title: '列表', //显示在标签栏
             permiss: '1',
           },
           component: List

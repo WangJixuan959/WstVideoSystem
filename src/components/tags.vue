@@ -1,14 +1,11 @@
 <template>
 	<div class="tags" v-if="tags.show">
 		<ul>
-			<li
-				class="tags-li"
-				v-for="(item, index) in tags.list"
-				:class="{ active: isActive(item.path) }"
-				:key="index"
-			>
+			<li class="tags-li" v-for="(item, index) in tags.list" :class="{ active: isActive(item.path) }" :key="index">
 				<router-link :to="item.path" class="tags-li-title">{{ item.title }}</router-link>
-				<el-icon @click="closeTags(index)"><Close /></el-icon>
+				<el-icon @click="closeTags(index)">
+					<Close />
+				</el-icon>
 			</li>
 		</ul>
 		<div class="tags-close-box">
@@ -53,8 +50,27 @@ const closeTags = (index: number) => {
 	}
 };
 
+
 // 设置标签
 const setTags = (route: any) => {
+	var specialTitle = ''
+	switch (String(route.params.sceneType).split('_')[1]) {
+		case '0':
+			specialTitle = "课堂"
+			break;
+		case '1':
+			specialTitle = "家庭"
+			break;
+		case '2':
+			specialTitle = "科技馆"
+			break;
+		case '3':
+			specialTitle = "校园"
+			break;
+		default:
+			break;
+	}
+	
 	const isExist = tags.list.some(item => {
 		return item.path === route.fullPath;
 	});
@@ -62,12 +78,15 @@ const setTags = (route: any) => {
 		if (tags.list.length >= 8) tags.delTagsItem(0);
 		tags.setTagsItem({
 			name: route.name,
-			title: route.meta.title,
+			title: specialTitle + route.meta.title,
 			path: route.fullPath
 		});
 	}
 };
 setTags(route);
+
+console.log('route:' + route.fullPath);
+
 onBeforeRouteUpdate(to => {
 	setTags(to);
 });
@@ -137,7 +156,7 @@ const handleTags = (command: string) => {
 .tags-li.active {
 	color: #fff;
 	border: 1px solid #409EFF;
-    background-color: #409EFF;
+	background-color: #409EFF;
 }
 
 .tags-li-title {

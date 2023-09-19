@@ -78,7 +78,7 @@ const input = ref('')
   }
 
   .topic {
-    height: 600px;
+    height: 500px;
 
     .words {
       text-align: center;
@@ -89,7 +89,7 @@ const input = ref('')
         font-weight: 1000;
         font-size: 80px;
         font-family: 'Times New Roman', Times, serif;
-        padding-top: 200px;
+        padding-top: 170px;
       }
 
       p {

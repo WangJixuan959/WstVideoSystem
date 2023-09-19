@@ -1,17 +1,6 @@
 <template>
     <div class="scene" v-for="(sceneData, idx) in sceneDatas">
-        <!-- <div class="item">
-            <h1>
-                <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + idx } }">
-                    {{ sceneData[0].firstTitle }}
-                </RouterLink>
-            </h1>
-            <el-button color=" rgb(78, 87, 123)" size="large" :dark="isDark" plain>
-                <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + idx } }">See More</RouterLink>
-            </el-button>
-        </div> -->
-
-        <el-row justify="space-evenly">
+        <el-row  justify="space-evenly">
             <el-col v-for="(scene, index) in sceneData" :key="scene" :span="5" :offset="index > 0 ? 1 : 0">
                 <div class="item">
                     <h1>
@@ -29,11 +18,18 @@
                         <span>{{ scene.secondTitle }}</span>
                         <div class="bottom">
                             <span>{{ scene.detail }}</span>
-                            <el-button text color=" white" size="small" class="botton" :dark="isDark">operate</el-button>
+                            <el-button text color=" white" size="small" class="botton">operate</el-button>
                         </div>
                     </div>
-                    <!-- <slot name="img"></slot>
-                    <slot name="text"></slot> -->
+                </el-card>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col type="flex" align="middle" style="align-self: center;">
+                <el-card class="introduct" shadow="hover" style="height:100px">
+                    <div>
+                        <p>详情介绍</p>
+                    </div>
                 </el-card>
             </el-col>
         </el-row>
@@ -41,7 +37,6 @@
 </template>
 
 <script lang="ts">
-import { isDark } from '~/composables/dark'
 export default {
     data() {
         return {
@@ -50,7 +45,7 @@ export default {
             sceneDatas: [
                 [
                     { firstTitle: "课堂", secondTitle: '视频1', detail: '详情', imgurl: '/src/assets/picture/one.png' },
-                    { firstTitle: "厨房", secondTitle: '视频2', detail: '详情', imgurl: '/src/assets/picture/two.png' },
+                    { firstTitle: "家庭", secondTitle: '视频2', detail: '详情', imgurl: '/src/assets/picture/two.png' },
                     { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情', imgurl: '/src/assets/picture/three.png' },
                     { firstTitle: "校园", secondTitle: '视频4', detail: '详情', imgurl: '/src/assets/picture/one.png' }
                 ],
@@ -102,21 +97,16 @@ export default {
 
 
 .scene {
-    margin: 0 80px 0 130px;
-    height: 700px;
+    margin: 0 80px 0 80px;
+    height: 600px;
 
     .item {
         color: white;
-        padding: 150px 10px;
+        padding: 30px 10px;
         display: flex;
         justify-content: space-between; //水平居中
-        padding-bottom: 30px;
+        padding-bottom: 20px;
 
-        //自定义链接颜色
-        .router-link-active {
-            text-decoration: none;
-            color: yellow;
-        }
         a {
             text-decoration: none;
             color: white;
@@ -130,6 +120,10 @@ export default {
         .text {
             color: white;
         }
+    }
+
+    .introduct{
+        margin-top: 60px;
     }
 }
 </style>

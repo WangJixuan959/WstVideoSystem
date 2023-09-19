@@ -1,50 +1,14 @@
 <template>
     <div class="sidebar">
-        <el-menu
-            class="sidebar-el-menu"
-            :default-active="onRoutes"
-            :collapse="sidebar.collapse"
-            background-color="#324157"
-            text-color="#bfcbd9"
-            active-text-color="#20a0ff"
-            unique-opened
-            router
-        >
-            <template v-for="item in items">
-                <template v-if="item.subs">
-                    <el-sub-menu :index="item.index" :key="item.index" v-permiss="item.permiss">
-                        <template #title>
-                            <el-icon>
-                                <component :is="item.icon"></component>
-                            </el-icon>
-                            <span>{{ item.title }}</span>
-                        </template>
-                        <template v-for="subItem in item.subs">
-                            <el-sub-menu
-                                v-if="subItem.subs"
-                                :index="subItem.index"
-                                :key="subItem.index"
-                                v-permiss="item.permiss"
-                            >
-                                <template #title>{{ subItem.title }}</template>
-                                <el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">
-                                    {{ threeItem.title }}
-                                </el-menu-item>
-                            </el-sub-menu>
-                            <el-menu-item v-else :index="subItem.index" v-permiss="item.permiss">
-                                {{ subItem.title }}
-                            </el-menu-item>
-                        </template>
-                    </el-sub-menu>
-                </template>
-                <template v-else>
-                    <el-menu-item :index="item.index" :key="item.index" v-permiss="item.permiss">
-                        <el-icon>
-                            <component :is="item.icon"></component>
-                        </el-icon>
-                        <template #title>{{ item.title }}</template>
-                    </el-menu-item>
-                </template>
+        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="sidebar.collapse" background-color="#324157"
+            text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
+            <template v-for="item in items" :key="item.index">
+                <el-menu-item :index="item.index" v-permiss="item.permiss">
+                    <el-icon>
+                        <component :is="item.icon"></component>
+                    </el-icon>
+                    <template #title><span>{{ item.title }}</span></template>
+                </el-menu-item>
             </template>
         </el-menu>
     </div>
@@ -58,24 +22,18 @@ import { useRoute } from 'vue-router';
 const items = [
     {
         icon: 'Odometer',
-        index: '/:sceneType/list',
-        title: '列表',
-        permiss: '1',
-    },
-    {
-        icon: 'Odometer',
         index: '/scene_0/list',
         title: '课堂',
         permiss: '1',
     },
     {
-        icon: 'Odometer',
+        icon: 'Setting',
         index: '/scene_1/list',
-        title: '厨房',
+        title: '家庭',
         permiss: '1',
     },
     {
-        icon: 'Odometer',
+        icon: 'PieChart',
         index: '/scene_2/list',
         title: '科技馆',
         permiss: '1',
@@ -85,14 +43,13 @@ const items = [
         index: '/scene_3/list',
         title: '校园',
         permiss: '1',
-        // 试验
-        subs: [
-            {
-                index: '/id_3/analyze',
-                title: '分析',
-                permiss: '2',
-            }
-        ],
+        // subs: [
+        //     {
+        //         index: '/id_3/analyze',
+        //         title: '分析',
+        //         permiss: '2',
+        //     }
+        // ],
     }
 ];
 
@@ -113,13 +70,17 @@ const sidebar = useSidebarStore();
     bottom: 0;
     overflow-y: scroll;
 }
+
 .sidebar::-webkit-scrollbar {
     width: 0;
 }
+
 .sidebar-el-menu:not(.el-menu--collapse) {
     width: 250px;
 }
-.sidebar > ul {
+
+
+.sidebar>ul {
     height: 100%;
 }
 </style>

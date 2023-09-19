@@ -12,9 +12,11 @@ const input = ref('')
 
 <template>
   <div class="nav">
-    <el-menu :default-active="activseIndex" class="el-menu-demo clear-border nav" mode="horizontal" :ellipsis="false"
+    <el-menu :default-active="activeIndex" class="el-menu-demo clear-border nav" mode="horizontal" :ellipsis="false"
       @select="handleSelect">
-      <el-menu-item index="1" >首页</el-menu-item>
+      <el-menu-item index="1">
+        <RouterLink to="/">首页</RouterLink>
+      </el-menu-item>
       <!-- <el-menu-item index="2">Isnfo</el-menu-item> -->
       <el-input v-model="input" placeholder="Search" class="search-input" :prefix-icon="Search" />
       <!-- <el-menu-item index="3">Orders</el-menu-item> -->
@@ -35,10 +37,10 @@ const input = ref('')
 
       <!-- <el-menu-item index="5">icon1</el-menu-item>
       <el-menu-item index="6">icon2</el-menu-item> -->
-      <el-menu-item index="7" >
+      <el-menu-item index="7">
         登录
       </el-menu-item>
-      
+
     </el-menu>
 
     <div class="topic">
@@ -46,9 +48,7 @@ const input = ref('')
         <h1>学生综合素养个体活动视频标注平台</h1>
         <p>Welcome</p>
       </div>
-
     </div>
-
 
   </div>
 </template>
@@ -66,19 +66,20 @@ const input = ref('')
 }
 
 .nav {
-    background-image:url('/src/assets/picture/22.png') ;
-    background-size: 100% 115%;
+  background-image: url('/src/assets/picture/22.png');
+  background-size: 100% 115%;
 
-  
   .el-menu {
-    background: rgb(70, 103, 126); 
-    .el-menu-item{
+    background: rgb(70, 103, 126);
+
+    .el-menu-item {
       color: white;
     }
   }
 
   .topic {
     height: 600px;
+
     .words {
       text-align: center;
 
@@ -99,8 +100,6 @@ const input = ref('')
         padding-top: 40px;
       }
     }
-
-
   }
 }
 

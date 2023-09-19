@@ -24,12 +24,12 @@
                     </el-button> -->
                 </div>
                 <el-card :body-style="{ padding: '15px' }" shadow="hover">
-                    <img v-bind:src="scene.imgurl"  class="image" />
+                    <img v-bind:src="scene.imgurl" class="image" />
                     <div style="padding: 10px" class="text">
                         <span>{{ scene.secondTitle }}</span>
                         <div class="bottom">
                             <span>{{ scene.detail }}</span>
-                            <el-button text color=" white" size="small" class="botton" :dark="isDark" >operate</el-button>
+                            <el-button text color=" white" size="small" class="botton" :dark="isDark">operate</el-button>
                         </div>
                     </div>
                     <!-- <slot name="img"></slot>
@@ -93,21 +93,15 @@ export default {
     align-items: center;
 }
 
-.button {
-    padding: 0;
-    min-height: auto;
-    color: white;
-}
-
 .image {
     width: auto;
     height: 150px;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 
-.scene { 
+.scene {
     margin: 0 80px 0 130px;
     height: 700px;
 
@@ -131,11 +125,11 @@ export default {
 
     .el-card {
         background-color: rgb(128, 148, 169);
-        border:rgb(123, 129, 136) ;
-        .text{
+        border: rgb(123, 129, 136);
+
+        .text {
             color: white;
         }
     }
 }
-
 </style>

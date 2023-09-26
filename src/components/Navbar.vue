@@ -57,8 +57,8 @@ const input = ref('')
 <style lang="scss" scoped>
 .search-input {
   width: 300px;
-  height: 50px;
-  padding-top: 10px;
+  height: 55px;
+  padding-top: 15px;
 }
 
 .flex-grow {
@@ -70,7 +70,8 @@ const input = ref('')
   background-size: 100% 115%;
 
   .el-menu {
-    background: rgb(70, 103, 126);
+    background: #242f42;
+    height: 70px;
 
     .el-menu-item {
       color: white;

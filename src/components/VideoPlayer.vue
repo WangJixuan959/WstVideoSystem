@@ -1,6 +1,7 @@
 <template>
     <div>
-        <vue3VideoPlay v-bind="options" poster='https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg' />
+        <vue3VideoPlay v-bind="options" poster="/src/assets/frames/frame2.png" />
+        <!-- poster 指定视频封面，默认第一帧 -->
     </div>
 </template>
 
@@ -12,7 +13,10 @@ const options = reactive({
     height: '283px', //播放器高度
     color: "#409eff", //主题色
     title: '', //视频名称
-    src: "https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/IronMan.mp4", //视频源
+    type:'mp4',
+    // src: '../../src/assets/video/video_1.mp4', //视频源
+    src: '/static/video_1.mp4',
+    // src:new URL('../src/assets/video/video_1.mp4'),
     muted: false, //静音
     webFullScreen: false,
     speedRate: ["0.75", "1.0", "1.25", "1.5", "2.0"], //播放倍速
@@ -26,4 +30,5 @@ const options = reactive({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

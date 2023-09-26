@@ -2,10 +2,6 @@
     <div class="contain">
         <Navbar />
         <SceneItem />
-
-        <div class="information">
-          <h1>联系我们</h1>
-        </div>
     </div>
     
 </template>
@@ -16,31 +12,7 @@ import SceneItem from '../components/SceneItem.vue';
 
 <style lang="scss" scoped>
 .contain{
-    background-color:rgb(70, 103, 126);
-    
-    .information{
-      height: 500px;
-      background-image: url('/src/assets/picture/22.png');
-      background-size: 100% 115%;
-    }
-}
-
-.bottom {
-    margin-top: 13px;
-    line-height: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.button {
-    padding: 0;
-    min-height: auto;
-}
-
-.image {
-    width: 100%;
-    display: block;
+    background-color:#324157;
 }
 
 h1, p {

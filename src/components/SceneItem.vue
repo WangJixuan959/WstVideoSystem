@@ -1,38 +1,23 @@
 <template>
     <div class="scene" v-for="(sceneData, idx) in sceneDatas">
-        <el-row  justify="space-evenly">
-            <el-col v-for="(scene, index) in sceneData" :key="scene" :span="5" :offset="index > 0 ? 1 : 0">
-                <div class="item">
-                    <h1>
-                        <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + index } }">
-                            {{ sceneData[index].firstTitle }}
-                        </RouterLink>
-                    </h1>
-                    <!-- <el-button color=" rgb(78, 87, 123)" size="large" :dark="isDark" plain>
-                        <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + index } }">See More</RouterLink>
-                    </el-button> -->
-                </div>
-                <el-card :body-style="{ padding: '15px' }" shadow="hover">
-                    <img v-bind:src="scene.imgurl" class="image" />
-                    <div style="padding: 10px" class="text">
-                        <span>{{ scene.secondTitle }}</span>
-                        <div class="bottom">
-                            <span>{{ scene.detail }}</span>
-                            <el-button text color=" white" size="small" class="botton">operate</el-button>
-                        </div>
-                    </div>
-                </el-card>
-            </el-col>
-        </el-row>
         <el-row>
-            <el-col type="flex" align="middle" style="align-self: center;">
-                <el-card class="introduct" shadow="hover" style="height:100px">
-                    <div>
-                        <p>详情介绍</p>
-                    </div>
-                </el-card>
+            <el-col align="center">
+                <el-carousel :interval="4000" type="card" height="400px">
+                    <el-carousel-item v-for="(scene, index) in sceneData" :key="scene">
+                        <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + index } }">
+                            <div class="carousel-item-content">
+                                <h1>{{ sceneData[index].firstTitle }}</h1>
+                                <div><img v-bind:src="scene.imgurl" class="image" /></div>
+                            </div>
+                        </RouterLink>
+                    </el-carousel-item>
+
+                </el-carousel>
             </el-col>
         </el-row>
+    </div>
+    <div class="information">
+        <p>华中科技大学智能互联网实验室</p>
     </div>
 </template>
 
@@ -44,30 +29,12 @@ export default {
             // [{‘一级标题’，‘二级标题’， ‘详情信息’，‘显示图片路径’}, {‘一级标题’，‘二级标题’， ‘详情信息’， ‘显示图片路径’} ......]
             sceneDatas: [
                 [
-                    { firstTitle: "课堂", secondTitle: '视频1', detail: '详情', imgurl: '/src/assets/picture/one.png' },
-                    { firstTitle: "家庭", secondTitle: '视频2', detail: '详情', imgurl: '/src/assets/picture/two.png' },
-                    { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情', imgurl: '/src/assets/picture/three.png' },
-                    { firstTitle: "校园", secondTitle: '视频4', detail: '详情', imgurl: '/src/assets/picture/one.png' }
+                    { firstTitle: "课堂",  imgurl: '/src/assets/picture/one.png' },
+                    { firstTitle: "家庭",imgurl: '/src/assets/picture/two.png' },
+                    { firstTitle: "科技馆", imgurl: '/src/assets/picture/two.png' },
+                    { firstTitle: "校园",  imgurl: '/src/assets/picture/one.png' }
                 ],
-                // TODO：下同
-                // [
-                //     { firstTitle: "厨房", secondTitle: '视频1', detail: '详情', imgurl: '' },
-                //     { firstTitle: "厨房", secondTitle: '视频2', detail: '详情', imgurl: '' },
-                //     { firstTitle: "厨房", secondTitle: '视频3', detail: '详情', imgurl: '' },
-                //     { firstTitle: "厨房", secondTitle: '视频4', detail: '详情', imgurl: '' }
-                // ],
-                // [
-                //     { firstTitle: "科技馆", secondTitle: '视频1', detail: '详情', imgurl: '' },
-                //     { firstTitle: "科技馆", secondTitle: '视频2', detail: '详情', imgurl: '' },
-                //     { firstTitle: "科技馆", secondTitle: '视频3', detail: '详情', imgurl: '' },
-                //     { firstTitle: "科技馆", secondTitle: '视频4', detail: '详情', imgurl: '' }
-                // ],
-                // [
-                //     { firstTitle: "校园", secondTitle: '视频1', detail: '详情', imgurl: '' },
-                //     { firstTitle: "校园", secondTitle: '视频2', detail: '详情', imgurl: '' },
-                //     { firstTitle: "校园", secondTitle: '视频3', detail: '详情', imgurl: '' },
-                //     { firstTitle: "校园", secondTitle: '视频4', detail: '详情', imgurl: '' }
-                // ]
+
             ]
         }
     },
@@ -90,40 +57,42 @@ export default {
 
 .image {
     width: auto;
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
+    height: 300px;
 }
-
 
 .scene {
     margin: 0 80px 0 80px;
-    height: 600px;
+    height: 450px;
 
-    .item {
+    a {
+        text-decoration: none;
         color: white;
-        padding: 30px 10px;
-        display: flex;
-        justify-content: space-between; //水平居中
-        padding-bottom: 20px;
+    }
 
-        a {
-            text-decoration: none;
-            color: white;
+    .el-carousel {
+        padding-top: 20px;
+        width: 1300px;
+
+        .carousel-item-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .el-carousel__item {
+            background-color: rgb(105, 123, 143);
         }
     }
+}
 
-    .el-card {
-        background-color: rgb(128, 148, 169);
-        border: rgb(123, 129, 136);
-
-        .text {
-            color: white;
-        }
-    }
-
-    .introduct{
-        margin-top: 60px;
-    }
+.information {
+    font-size: 18px;
+    color: white;
+    padding-bottom: 10px;
+    text-align: center;
+    letter-spacing: 2px; //字间距
 }
 </style>

@@ -1,8 +1,9 @@
 <template>
-    <div>
+    <div class="container">
         <div>
-            <el-breadcrumb :separator-icon="ArrowRight" class="breadcrumb">
-                <el-breadcrumb-item>{{ scene }}</el-breadcrumb-item>
+            <el-breadcrumb :separator-icon="ArrowRight">
+                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: sceneType }">{{ scene }}场景</el-breadcrumb-item>
                 <el-breadcrumb-item>{{ videoId }}</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -10,7 +11,7 @@
         <div>
             <el-row :gutter="20">
                 <el-col type="flex" align="middle" style="align-self: center;">
-                    <el-card shadow="hover" class="mgb20" style="height:auto">
+                    <el-card shadow="hover">
                         <div>
                             <p>视频信息</p>
                         </div>
@@ -18,27 +19,35 @@
                 </el-col>
             </el-row>
             <el-row :gutter="20">
-                <el-col :span="14" type="flex" align="middle">
-                    <el-card shadow="hover" style="width: 800px; height: 600px">
+                <el-col :span="12" type="flex" align="middle">
+                    <el-card shadow="hover" style="height: 400px;">
                         <div>
                             <p>原始视频</p>
                             <VideoPlayer />
                         </div>
                     </el-card>
                 </el-col>
-                <el-col :span="10" type="flex" align="middle" style="align-self: center;">
-                    <el-card shadow="hover" style="width: 500px; height: 300px">
+                <el-col :span="12" type="flex" align="middle" style="align-self: center;">
+                    <el-card shadow="hover" style="height: 400px;">
                         <div>
                             <p>事件发生截图</p>
-                            <img
-                                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
+                            <!-- <img src='/src/assets/frames/frame10.png' class="image"> -->
+                            <div class="demo-image__preview">
+                                <el-image  class="image" src='/src/assets/frames/frame10.png'  :zoom-rate="1.2"
+                                    :preview-src-list="srcList" :initial-index="4" fit="cover" />
+                            </div>
                         </div>
                     </el-card>
-                    <el-card shadow="hover" style="width: 500px; height: 300px">
-                        <p>事件发生列表</p>
-                        <el-table :data="tableData" stripe style="width: 500px">
-                            <el-table-column prop="time" label="发生时间" width="100" header-align="center" align="center" />
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col type="flex" align="middle" style="align-self: center;">
+                    <el-card shadow="hover">
+                        <p>分析结果</p>
+                        <el-table :data="tableData" stripe>
+                            <el-table-column prop="time" label="事件发生时间" width="150" header-align="center" align="center" />
                             <el-table-column prop="type" label="事件类型" width="400" header-align="center" align="center" />
+                            <el-table-column prop="type" label="具体内容" width="700" header-align="center" align="center" />
                         </el-table>
                     </el-card>
                 </el-col>
@@ -53,6 +62,7 @@ import { ArrowRight } from '@element-plus/icons-vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute();
+var sceneType = '/' + String(route.params.sceneType) + '/list';
 var scene = ''
 switch (String(route.params.sceneType).split('_')[1]) {
     case '0':
@@ -90,30 +100,43 @@ const tableData = [
         type: '类型4',
     },
 ]
+
+const srcList = [
+  'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+  'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+  'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+  'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
+  'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg',
+  'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
+  'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
+]
 </script>
 
 <style lang="scss" scoped>
-.el-row {
-    margin: 10px;
+.container {
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    .el-breadcrumb {
+        font-size: 18px;
+        padding-bottom: 15px;
+        font-family: 'Times New Roman', 'Courier New', Times, serif;
+    }
 }
 
-.el-card{
-    padding: 10px 10px;
-}
-.grid-content {
-    border-radius: 4px;
-    min-height: 36px;
+
+.image {
+    width: auto;
+    height: 300px;
+    // display: flex;
+    // justify-content: space-between;
+    // padding-top: 60px;
 }
 
-.eventList {
-    padding: 50px 0;
-}
 
-.breadcrumb {
-    font-size: 20px;
-    font-family: 'Times New Roman', 'Courier New', Times, serif;
-    padding: 10px 10px;
-}
+
 
 h1 {
     text-align: center;
@@ -123,7 +146,19 @@ h1 {
     padding-top: 0;
 }
 
-.mgb20 {
+.el-card {
     margin-bottom: 20px;
+    height: auto;
+}
+
+.demo-image__error .image-slot {
+  font-size: 30px;
+}
+.demo-image__error .image-slot .el-icon {
+  font-size: 30px;
+}
+.demo-image__error .el-image {
+  width: 100%;
+  height: 200px;
 }
 </style>

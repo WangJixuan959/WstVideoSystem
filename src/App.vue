@@ -27,5 +27,12 @@ body,
     height: 100%;
     overflow: hidden;
 }
+body {
+    font-family: Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+}
+
+a {
+    text-decoration: none
+}
 
 </style>

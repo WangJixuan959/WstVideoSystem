@@ -21,7 +21,7 @@
 					<template #dropdown>
 						<el-dropdown-menu>
 							<el-dropdown-item command="tohome">主页</el-dropdown-item>
-							<!-- <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item> -->
+							<el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
 						</el-dropdown-menu>
 					</template>
 				</el-dropdown>
@@ -55,9 +55,9 @@ const router = useRouter();
 const handleCommand = (command: string) => {
 	if (command == 'loginout') {
 		localStorage.removeItem('ms_username');
-		router.push('/login');
+		router.push('/');
 	} else if (command == 'tohome') {
-		router.push('/home');
+		router.push('/');
 	}
 };
 </script>

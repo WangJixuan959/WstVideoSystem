@@ -2,7 +2,7 @@
     <div class="scene" v-for="(sceneData, idx) in sceneDatas">
         <el-row>
             <el-col align="center">
-                <el-carousel :interval="4000" type="card" height="400px">
+                <el-carousel :interval="4000" type="card" height="380px">
                     <el-carousel-item v-for="(scene, index) in sceneData" :key="scene">
                         <RouterLink :to="{ name: 'list', params: { sceneType: 'scene_' + index } }">
                             <div class="carousel-item-content">
@@ -29,10 +29,10 @@ export default {
             // [{‘一级标题’，‘二级标题’， ‘详情信息’，‘显示图片路径’}, {‘一级标题’，‘二级标题’， ‘详情信息’， ‘显示图片路径’} ......]
             sceneDatas: [
                 [
-                    { firstTitle: "课堂",  imgurl: '/src/assets/picture/one.png' },
-                    { firstTitle: "家庭",imgurl: '/src/assets/picture/two.png' },
-                    { firstTitle: "科技馆", imgurl: '/src/assets/picture/two.png' },
-                    { firstTitle: "校园",  imgurl: '/src/assets/picture/one.png' }
+                    { firstTitle: "课堂表现",  imgurl: '/src/assets/picture/class_1.png' },
+                    { firstTitle: "家庭劳务",imgurl: '/src/assets/picture/homework_1.png' },
+                    { firstTitle: "科技实验", imgurl: '/src/assets/picture/experiment_1.png' },
+                    { firstTitle: "校园活动",  imgurl: '/src/assets/picture/one.png' }
                 ],
 
             ]
@@ -70,7 +70,7 @@ export default {
     }
 
     .el-carousel {
-        padding-top: 20px;
+        padding-top: 40px;
         width: 1300px;
 
         .carousel-item-content {

@@ -70,7 +70,7 @@ const input = ref('')
   background-size: 100% 115%;
 
   .el-menu {
-    background: #242f42;
+    background: #324157;
     height: 70px;
 
     .el-menu-item {
@@ -79,7 +79,7 @@ const input = ref('')
   }
 
   .topic {
-    height: 500px;
+    height: 400px;
 
     .words {
       text-align: center;
@@ -90,7 +90,7 @@ const input = ref('')
         font-weight: 1000;
         font-size: 80px;
         font-family: 'Times New Roman', Times, serif;
-        padding-top: 170px;
+        padding-top: 130px;
       }
 
       p {

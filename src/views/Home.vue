@@ -13,6 +13,8 @@ import SceneItem from '../components/SceneItem.vue';
 <style lang="scss" scoped>
 .contain{
     background-color:#324157;
+    // background-image: url('/src/assets/picture/22.png');
+    // background-size: 100% 115%;
 }
 
 h1, p {

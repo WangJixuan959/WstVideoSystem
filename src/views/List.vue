@@ -2,7 +2,7 @@
     <div class="container">
         <el-breadcrumb :separator-icon="ArrowRight">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>{{ firstTitle }}场景</el-breadcrumb-item>
+            <el-breadcrumb-item>{{ firstTitle }}</el-breadcrumb-item>
         </el-breadcrumb>
 
         <div class="handle-box">
@@ -18,11 +18,11 @@
 
         <el-table :data="tableData" border class="tableData" size="large" height="600"
             header-cell-class-name="table-header">
-            <el-table-column fixed="left" prop="id" label="id" width="55" align="center" />
-            <el-table-column prop="name" label="Name" width="180" />
-            <el-table-column prop="time" label="时长" width="150" />
-            <el-table-column prop="state" label="状态" width="150" />
-            <el-table-column label="状态" align="center">
+            <el-table-column fixed="left" prop="id"  width="55" align="center" />
+            <el-table-column prop="name" label="视频名称" width="180" />
+            <el-table-column prop="time" label="时长（s）" width="150" />
+            <!-- <el-table-column prop="state" label="状态" width="150" /> -->
+            <el-table-column label="状态" align="center" width="150">
                 <template #default="scope">
                     <el-tag :type="scope.row.state === '已分析' ? 'success' : scope.row.state === '异常' ? 'danger'
                         : scope.row.state === '待分析' ? 'info' : ''">
@@ -38,8 +38,6 @@
                     <el-button link type="primary" size="large" @click="handleClick(scope.row)">Analyze</el-button>
                 </template>
             </el-table-column>
-
-
         </el-table>
         <div class="pagination">
             <el-pagination background layout="total, prev, pager, next" :current-page="query.pageIndex"
@@ -51,35 +49,49 @@
 
 <script lang="ts" setup>
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
-import { ref, reactive } from 'vue';
+import { ref, reactive ,computed} from 'vue';
 import { Delete, Edit, Search, ArrowRight } from '@element-plus/icons-vue';
 const route = useRoute();
 
-var firstTitle = ''
+// 使用ref定义响应式变量firstTitle
+const firstTitle = ref('无');
+
 const getTitle = (route: any) => {
     switch (route.params.sceneType) {
         case 'scene_0':
-            firstTitle = '课堂'
+            firstTitle.value = '课堂表现'
             break;
         case 'scene_1':
-            firstTitle = '家庭'
+            firstTitle.value = '家庭劳务'
             break;
         case 'scene_2':
-            firstTitle = '科技馆'
+            firstTitle.value = '科技实验'
             break;
         case 'scene_3':
-            firstTitle = '校园'
+            firstTitle.value = '校园活动'
             break;
         default:
             break;
     }
 }
 getTitle(route);
+
+console.log(firstTitle);
+
 onBeforeRouteUpdate(to => {
     getTitle(to);
 });
 
 const router = useRouter()
+// router.afterEach((to, from) => {
+//     // 在路由导航完成后执行的操作
+//     console.log(`Navigated from ${from.fullPath} to ${to.fullPath}`);
+//     // 执行其他操作，例如页面分析、事件记录等
+//     getTitle(to);
+//     console.log(firstTitle);
+// })
+
+
 const handleClick = (row) => {
     console.log(row)
     router.push({
@@ -106,6 +118,15 @@ const query = reactive({
 // 	});
 // };
 // getData();
+
+//搜索商品
+const results = computed(() => {
+    return tableData.filter(item => {
+        item.name.includes(query.name);
+        item.state.includes(query.state)
+    });
+});
+
 // 分页导航
 const handlePageChange = (val: number) => {
     query.pageIndex = val;
@@ -115,7 +136,13 @@ const handlePageChange = (val: number) => {
 const handleSearch = () => {
     query.pageIndex = 1;
     // getData();
+    let items = results.value;
+    items.forEach((item) => {
+        console.log(item.name)
+    });
+    tableData = items
 };
+
 interface User {
     id: string,
     name: string,
@@ -127,7 +154,7 @@ interface User {
 
 
 // TODO：从接口获取数据，以sceneType为索引
-const tableData: User[] = [
+var tableData: User[] = [
     {
         id: '1',
         name: '视频1',

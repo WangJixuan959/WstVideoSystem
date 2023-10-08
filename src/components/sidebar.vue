@@ -23,25 +23,25 @@ const items = [
     {
         icon: 'Odometer',
         index: '/scene_0/list',
-        title: '课堂',
+        title: '课堂表现',
         permiss: '1',
     },
     {
         icon: 'Setting',
         index: '/scene_1/list',
-        title: '家庭',
+        title: '家庭劳务',
         permiss: '1',
     },
     {
         icon: 'PieChart',
         index: '/scene_2/list',
-        title: '科技馆',
+        title: '科技实验',
         permiss: '1',
     },
     {
         icon: 'Calendar',
         index: '/scene_3/list',
-        title: '校园',
+        title: '校园活动',
         permiss: '1',
         // subs: [
         //     {
